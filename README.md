@@ -6,29 +6,29 @@ This repository contains the solution for both parts of the DevOps take-home ass
 
 ```
 /
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # GitHub Actions CI/CD pipeline
 ├── task1/                          # Part 1: Architecture design proposal
+│   ├── architecture_diagram.png    # AWS architecture diagram
 │   ├── design_proposal.pdf         # PDF version with architecture diagram
-│   ├── architecture_diagram.png    # AWS 
 │
 ├── task2/                          # Part 2: Implementation Challenge
-│   ├── terraform/                  # Terraform infrastructure (modularised)
-│   │   ├── main.tf                 # Provider & backend configuration
-│   │   ├── variables.tf            # Input variables
-│   │   ├── outputs.tf              # Stack outputs
-│   │   ├── modules.tf              # Module wiring
-│   │   └── modules/
-│   │       ├── vpc/                # VPC with public subnets & flow logs
-│   │       ├── ecr/                # ECR repository with scanning & lifecycle
-│   │       ├── ecs/                # ECS Fargate + ALB + CloudWatch Logs
-│   │       ├── waf/                # AWS WAF Web ACL (OWASP rules, rate limiting)
-│   │       └── monitoring/         # CloudWatch alarms (CPU, memory, unhealthy hosts)
 │   ├── app/                        # Simple Python (Flask) web server
 │   │   ├── app.py
-│   │   ├── requirements.txt
-│   │   └── Dockerfile
-│   └── .github/
-│       └── workflows/
-│           └── deploy.yml          # GitHub Actions CI/CD pipeline
+│   │   ├── Dockerfile
+│   │   └── requirements.txt
+│   └── terraform/                  # Terraform infrastructure (modularised)
+│       ├── main.tf                 # Provider & backend configuration
+│       ├── variables.tf            # Input variables
+│       ├── outputs.tf              # Stack outputs
+│       ├── modules.tf              # Module wiring
+│       └── modules/
+│           ├── ecr/                # ECR repository with scanning & lifecycle
+│           ├── ecs/                # ECS Fargate + ALB + CloudWatch Logs
+│           ├── monitoring/         # CloudWatch alarms (CPU, memory, unhealthy hosts)
+│           ├── vpc/                # VPC with public subnets & flow logs
+│           └── waf/                # AWS WAF Web ACL (OWASP rules, rate limiting)
 │
 └── README.md                       # This file
 ```
