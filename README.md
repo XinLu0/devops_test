@@ -110,9 +110,11 @@ The pipeline at `.github/workflows/deploy.yml` automates the full flow:
 
 Note: For the first deployment, create the ECR repository before running the full GitHub Actions pipeline:
 
+```bash
 cd task2/terraform
 terraform init
 terraform apply -target=module.ecr -auto-approve
+```
 
 After the ECR repository exists, the GitHub Actions pipeline can build, push, and deploy the application automatically.
 
