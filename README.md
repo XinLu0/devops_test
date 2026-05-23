@@ -102,11 +102,19 @@ Open that URL in your browser to see the "Hello World" page.
 
 ### CI/CD (GitHub Actions)
 
-The pipeline at `task2/.github/workflows/deploy.yml` automates the full flow:
+The pipeline at `.github/workflows/deploy.yml` automates the full flow:
 
 1. **Build** — builds the Docker image and pushes to ECR (tagged with the Git SHA).
 2. **Deploy Infra** — runs `terraform apply` to create/update all resources.
 3. **Deploy Service** — forces a new ECS deployment and waits for stability.
+
+Note: For the first deployment, create the ECR repository before running the full GitHub Actions pipeline:
+
+cd task2/terraform
+terraform init
+terraform apply -target=module.ecr -auto-approve
+
+After the ECR repository exists, the GitHub Actions pipeline can build, push, and deploy the application automatically.
 
 ### Required GitHub Secrets
 
